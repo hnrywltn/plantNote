@@ -1,10 +1,16 @@
 NAVIGATION
---Need to think about how to hide navbar. its not hiding when path is changed
 
---think about use state/effect to rerender
------making isHidden the state
 
 
 
 SPLASH
 --when the box shadow lifts - you can see the div
+
+
+BACKEND
+--FIX YOUR TRASH SCHEMA!!!!
+
+
+SEEDING
+--seed plants, notes, and todos for demo and 3 of the fake users
+  --total 15 (3, 3, 3, 6)

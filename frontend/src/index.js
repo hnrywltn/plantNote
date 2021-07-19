@@ -9,6 +9,7 @@ import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 
 
+
 //import session (login etc..) from session
 import * as sessionActions from './store/session';
 
@@ -30,7 +31,9 @@ function Root() {
   return (
     <ReduxProvider store={store}>
       <BrowserRouter>
-        <App />
+
+          <App />
+
       </BrowserRouter>
     </ReduxProvider>
   );

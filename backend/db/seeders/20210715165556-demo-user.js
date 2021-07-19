@@ -7,17 +7,69 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [
       {
         email: 'demo@user.io',
+        name: 'Demo User',
+        bio: faker.lorem.sentence(),
+        profileImg: 'https://assets.vogue.com/photos/5c8ff6c0ac563c2de0043d1d/3:4/w_1950,h_2600,c_limit/00-promo-image-boys-with-plants-book.jpg',
         username: 'Demo-lition',
         hashedPassword: bcrypt.hashSync('password'),
       },
       {
         email: faker.internet.email(),
-        username: 'FakeUser1',
+        username: faker.name.findName(),
+        name: 'FakeUser',
+        bio: faker.lorem.sentence(),
+        profileImg: 'https://thispersondoesnotexist.com/',
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
       },
       {
         email: faker.internet.email(),
-        username: 'FakeUser2',
+        username: faker.name.findName(),
+        name: 'FakeUser',
+        bio: faker.lorem.sentence(),
+        profileImg: 'https://thispersondoesnotexist.com/',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },
+
+
+
+      {
+        email: faker.internet.email(),
+        username: faker.name.findName(),
+        name: 'FakeUser',
+        bio: faker.lorem.sentence(),
+        profileImg: 'https://thispersondoesnotexist.com/',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },
+      {
+        email: faker.internet.email(),
+        username: faker.name.findName(),
+        name: 'FakeUser',
+        bio: faker.lorem.sentence(),
+        profileImg: 'https://thispersondoesnotexist.com/',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },
+      {
+        email: faker.internet.email(),
+        username: faker.name.findName(),
+        name: 'FakeUser',
+        bio: faker.lorem.sentence(),
+        profileImg: 'https://thispersondoesnotexist.com/',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },
+      {
+        email: faker.internet.email(),
+        username: faker.name.findName(),
+        name: 'FakeUser',
+        bio: faker.lorem.sentence(),
+        profileImg: 'https://thispersondoesnotexist.com/',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },
+      {
+        email: faker.internet.email(),
+        username: faker.name.findName(),
+        name: 'FakeUser',
+        bio: faker.lorem.sentence(),
+        profileImg: 'https://thispersondoesnotexist.com/',
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
       },
     ], {});
@@ -30,3 +82,8 @@ module.exports = {
     }, {});
   }
 };
+
+//add
+  //name
+  //bio
+  //profileImg

@@ -1,1 +1,20 @@
 /* TODO Add site wide styles */
+
+
+
+.hideNavbar {
+    display: none;
+}
+
+.navbar {
+    display: flex;
+    /* justify-content: space-around; */
+    flex-direction: column;
+    background-color: red;
+    /* align-items: center; */
+    box-sizing: border-box;
+}
+
+/* .hideUnderline {
+    text-decoration: none;
+} */

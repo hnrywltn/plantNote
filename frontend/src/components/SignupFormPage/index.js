@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import SignupFormCSS from './SignupForm.module.css';
+// import SignupFormCSS from './SignupForm.module.css';
 
 
 
@@ -19,7 +19,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/plants" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();

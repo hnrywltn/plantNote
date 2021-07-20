@@ -9,6 +9,8 @@ body {
 }
 
 .splashPageContainer {
+  grid-row: 1 / end;
+  grid-column: 1 / end;
   min-width: 100%;
   max-width: 100%;
   min-height: 100%;

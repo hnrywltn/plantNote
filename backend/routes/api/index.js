@@ -6,10 +6,13 @@ const router = require('express').Router();
 //import and use othe api routes
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
+const plantsRouter = require('./plants.js');
 
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
+
+router.use('/plants', plantsRouter);
 
 
 
@@ -22,7 +25,10 @@ const { restoreUser } = require('../../utils/auth.js');
 const { requireAuth } = require('../../utils/auth.js');
 const { User } = require('../../db/models');
 
-
+router.get('/hello/world', function(req, res) {
+  res.cookie('XSRF-TOKEN', req.csrfToken());
+  res.send('Hello World!');
+});
 
 //TESTED with sending a post request with csrf from front end
 // //test

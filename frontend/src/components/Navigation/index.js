@@ -1,9 +1,8 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import NavigationCSS from './Navigation.module.css';
-
+// import NavigationCSS from './Navigation.module.css';
 import { useState, useEffect } from 'react';
 
 
@@ -25,13 +24,39 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+        <div><ProfileButton user={sessionUser} /></div>
     );
+  if(location.pathname === '/plants' || location.pathname === '/todos' || location.pathname === '/plants/add'){
+    sessionLinks = (
+      <>
+        <ProfileButton user={sessionUser} />
+        <Link to="/plants/add" className='addPlant'>
+          <div>
+            +
+          </div>
+        </Link>
+        <Link to="/todos" className='toDoList noDec sideBar'>
+          <div>
+            ToDo List
+          </div>
+        </Link>
+      </>
+    );
+  }
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <Link to="/login" className='login noDec sideBar'>
+          <div>
+            Login
+          </div>
+        </Link>
+        <Link to="/signup" className='signup noDec sideBar'>
+          <div>
+            Sign Up
+          </div>
+        </Link>
+
       </>
     );
   }
@@ -40,12 +65,15 @@ function Navigation({ isLoaded }){
 
   return (
     <div className={hideNav}>
-      <ul>
-        <li>
-          <NavLink exact to="/">Home</NavLink>
-          {isLoaded && sessionLinks}
-        </li>
-      </ul>
+      <Link to="/plants" className='home noDec sideBar'>
+        <div>
+          Home
+        </div>
+      </Link>
+
+
+      {isLoaded && sessionLinks}
+
     </div>
   );
 }

@@ -17,7 +17,7 @@ function SplashPage() {
        credential: 'Demo-lition',
        password:'password'
       }));
-    history.push('/');
+    history.push('/plants');
   }
 
 
@@ -34,7 +34,7 @@ function SplashPage() {
 
 
 
-      <Link to="/" className={SplashPageCSS.splashHome}>
+      <Link to="/plants" className={SplashPageCSS.splashHome}>
         <div>
           <h2>HOME</h2>
         </div>

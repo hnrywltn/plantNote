@@ -13,11 +13,11 @@ module.exports = {
         allowNull: false,
       },
       binomialName: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
         allowNull: false,
       },
       imgUrl: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
         allowNull: false,
       },
       description: {

@@ -6,6 +6,11 @@ import SignupFormPage from "./components/SignupFormPage";
 import SplashPage from "./components/SplashPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import HomePage from "./components/HomePage";
+import AddPlant from "./components/AddPlant";
+
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +32,13 @@ function App() {
             <SplashPage />
           </Route>
 
+          <Route exact path="/plants">
+            <HomePage />
+          </Route>
+
+          <Route path="/plants/add">
+            <AddPlant />
+          </Route>
 
           <Route path="/login">
             <LoginFormPage />

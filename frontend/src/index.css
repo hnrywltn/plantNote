@@ -1,20 +1,175 @@
 /* TODO Add site wide styles */
+#root {
+  background-size: cover;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(20, 5%);
+  grid-template-rows: repeat(20, 5%);
+  /* background-color: slategray; */
+}
 
 
+
+
+
+
+
+
+
+
+/* NAVBAR STARRRRRRTTTTTTT */
 
 .hideNavbar {
     display: none;
-}
+  }
 
-.navbar {
-    display: flex;
+  .navbar {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(12, 1fr);
     /* justify-content: space-around; */
-    flex-direction: column;
-    background-color: red;
+    /* flex-direction: column; */
+    background-color: rgba(112, 128, 144, 0.688) solid .5px;;
+    grid-row: 1 /end;
+    grid-column: 1 / 5;
     /* align-items: center; */
+    box-shadow: inset 0 0 20px 0 rgba(0, 93, 68, 0.475);
     box-sizing: border-box;
+    font-family: monospace;
+    font-size: 45px;
+    border: rgba(112, 128, 144, 0.688) solid .5px;
+  }
+
+  .noDec{
+    color: rgba(112, 128, 144, 0.692);
+    text-decoration: none;
+  }
+
+  /* .noDec:hover{
+    color: snow;
+  } */
+
+  .home {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-row: 1 / 3;
+    padding: 10px;
+  }
+
+
+  .login {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-row: 11 / 12;
+    padding-bottom: 25px;
+  }
+
+  .signup {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-row: 12 / 13;
+    padding-bottom: 25px;
+  }
+
+  .addPlant {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-row: 10 / 13;
+    font-size: 150px;
+    text-decoration: none;
+    color: rgba(112, 128, 144, 0.692);
+  }
+
+  .toDoList {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-row: 3 / 5;
+  }
+
+
+
+  .addPlant:hover {
+    color: snow;
+    background-color: rgba(0, 93, 68, 0.774);
+    padding: 0px;
+    text-shadow: rgb(0, 0, 0) 1px 0 10px;
+    box-shadow: inset 0 0 10px #0000008e;
+  }
+
+
+  .sideBar:hover {
+    background-color: rgba(0, 93, 68, 0.774);
+    padding: 0px;
+    color: snow;
+    font-weight: bolder;
+    text-shadow: rgb(0, 0, 0) 1px 0 10px;
+    box-shadow: inset 0 0 10px #0000008e;
+  }
+
+
+/* NAVBAR END !!!!!!!!!!!!!!!!!!! */
+
+
+.profileBttn {
+  font-family: monospace;
+  height: 100%;
+  width: 100%;
+  background-image: url('https://assets.vogue.com/photos/5c8ff6c0ac563c2de0043d1d/3:4/w_1950,h_2600,c_limit/00-promo-image-boys-with-plants-book.jpg');
+  background-size: cover;
+  background-color: transparent;
+  font-size: 40px;
+  outline: none;
+  text-decoration: none;
+  color: rgba(112, 128, 144, 0.692);
+  grid-row: 7 / 10;
 }
 
-/* .hideUnderline {
-    text-decoration: none;
-} */
+.smallBttn {
+  font-family: monospace;
+  height: 100%;
+  width: 100%;
+  background-image: url('https://assets.vogue.com/photos/5c8ff6c0ac563c2de0043d1d/3:4/w_1950,h_2600,c_limit/00-promo-image-boys-with-plants-book.jpg');
+  background-size: cover;
+  background-color: transparent;
+  font-size: 40px;
+  outline: none;
+  text-decoration: none;
+  color: rgba(112, 128, 144, 0.692);
+  grid-row: 5 / 7;
+}
+
+
+.profileBttn:hover {
+  color: snow;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+  /* text-shadow:  0 0 1px rgba(0, 0, 0, 0.5); */
+}
+
+.profile-dropdown {
+  font-family: monospace;
+  grid-row: 7 / 10;
+  color: rgb(76, 86, 97);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+list-style-type: none;
+}
+
+.logOut {
+  background-size: cover;
+  background-color: transparent;
+  font-size: 40px;
+  outline: none;
+  text-decoration: none;
+  color: rgba(112, 128, 144, 0.692);
+}

@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 
 // import {editPlant} from '../../store/plants.js';
-import {getPlants} from '../../store/plants.js';
+import {getPlants, editPlant, removePlant} from '../../store/plants.js';
 
 
 const Plant = () => {
@@ -13,27 +13,79 @@ const Plant = () => {
   const plants = useSelector(state => {
     return state.plant;
   });
+
+
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
+  const plant = plants[id];
+
+// console.log(plant);
+
+  const [showForm, setShowForm] = useState(false);
 
 
-  console.log(id, 'params');
-  const [count, setCount] = useState(0);
+  const [name, setName] = useState('');
+  const [binomialName, setBinomialName] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
+  const [description, setDescription] = useState('');
+  const [sunRequirements, setSunRequirements] = useState('');
+  const [userId, setUserId] = useState(0);
+  const [errors, setErrors] = useState([])
+
+
+
 
   useEffect(() => {
     dispatch(getPlants());
-  }, []);
+    if(plant){
+      setName(plant.name);
+      setBinomialName(plant.binomialName);
+      setImgUrl(plant.imgUrl);
+      setDescription(plant.description);
+      setSunRequirements(plant.sunRequirements);
+      setUserId(plant.userId);
+    }
+  }, [plant]);
 
-  const plant = plants[id];
-  console.log(plant, 'plant');
 
 
 
-  console.log(sessionUser, 'sessionUser');
+
+
+
+
+  // console.log(sessionUser, 'sessionUser');
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+
+    await dispatch(editPlant({ id, name, binomialName, imgUrl, description, sunRequirements, userId}))
+      // .catch(async (res) => {
+      //   const data = await res.json();
+      //   if (data && data.errors) setErrors(data.errors);
+      // });
+  //console.log(plant)
+      setShowForm(false);
+      // history.push(`/plants/${plant.id}`);
+      return;
+  }
+
+
+  const handleDelete = async(e) => {
+    // e.preventDefault();
+    await dispatch(removePlant(id))
+    history.push('/plants');
+  }
+
+
+
+
+
 
 
   let plantDom;
 
-  if(plant) {
+  if(plant && !showForm ) {
     plantDom = (
     <>
       <div className='plantName'>
@@ -50,8 +102,13 @@ const Plant = () => {
         <p>{plant.sunRequirements}</p>
       </div>
       <div className='plantDescription'>
-        <p>{plant.description}</p>
+        {/* shorten descrip CHANGE BACK */}
+        <p>{plant.description.slice(0, 40)}</p>
       </div>
+      {sessionUser.id === plant.userId &&<div className='plantShowFormBttn'>
+        <button onClick={() => setShowForm(true)}>Edit / Delete</button>
+      </div>}
+
       <div className='plantUser'>
         <p>{plant.userId}</p>
       </div>
@@ -60,6 +117,76 @@ const Plant = () => {
       </div>
     </>
     )
+} else if(plant && showForm ) {
+  plantDom = (
+    <div className="editPlantForm form">
+      <div className='editPlantTitle'><h2>Edit Your Plant:</h2></div>
+      <form onSubmit={handleSubmit}>
+        <button className='editPlantButton' type='submit'>Edit Plant</button>
+        <button
+          className='editPlantButton'
+          type='click'
+          onClick={handleDelete}
+        >DELETE Plant</button>
+        <div className='errorsContainer'>
+          <ul>
+            {/* map over errors */}
+          </ul>
+        </div>
+
+        <label>
+          Name Of plant:
+          <input type="text"
+                 value={name}
+                 onChange={(e) => setName(e.target.value)}
+                 required
+          />
+        </label>
+        <label>
+          Binomial Name:
+          <input type="text"
+                 value={binomialName}
+                 onChange={(e) => setBinomialName(e.target.value)}
+                 required
+          />
+        </label>
+        <label>
+          Image Link:
+          <input type="text"
+                 value={imgUrl}
+                 onChange={(e) => setImgUrl(e.target.value)}
+                 required
+          />
+        </label>
+        <label>
+          Description:
+          <input type="text"
+                 value={description}
+                 onChange={(e) => setDescription(e.target.value)}
+                 required
+          />
+        </label>
+        <label>
+          Sun Requirements:
+          <input type="text"
+                 value={sunRequirements}
+                 onChange={(e) => setSunRequirements(e.target.value)}
+                 required
+          />
+        </label>
+        <label>
+          UserId:
+          <input type="number"
+                 value={userId}
+                 onChange={(e) => setUserId(e.target.value)}
+                 required
+          />
+        </label>
+
+
+      </form>
+    </div>
+    );
 } else {
   plantDom = null;
 }

@@ -30,6 +30,17 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       },
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    bio: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    profileImg: {
+      type: DataTypes.STRING
+    },
   },
   //this adds extra protection with queries
     //model scope for currentUser that will exclude only the hashedPassword field. Finally, define another scope for including all the fields, which should only be used when checking the login credentials of a user.
@@ -53,8 +64,8 @@ module.exports = (sequelize, DataTypes) => {
 
   // will return an object with only the User instance information that is safe to save to a JWT.
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    const { id, username, email, bio, profileImg } = this; // context will be the User instance
+    return { id, username, email, bio, profileImg };
   };
 
 

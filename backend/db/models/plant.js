@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Plant.associate = function(models) {
     Plant.belongsTo(models.User, {foreignKey: 'userId'});
-    Plant.hasMany(models.Todo, {foreignKey: 'plantId'});
+    Plant.hasMany(models.ToDo, {foreignKey: 'plantId'});
     Plant.hasMany(models.Note, {foreignKey: 'plantId'});
   };
   return Plant;

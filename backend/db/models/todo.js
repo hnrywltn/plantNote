@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     dueDate: DataTypes.DATE
   }, {});
   ToDo.associate = function(models) {
-    Todo.belongsTo(models.User, { foreignKey: 'userId' });
+    ToDo.belongsTo(models.User, { foreignKey: 'userId' });
     ToDo.belongsTo(models.Plant, { foreignKey: 'plantId' });
   };
   return ToDo;

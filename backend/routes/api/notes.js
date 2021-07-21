@@ -3,14 +3,14 @@ const router = express.Router();
 
 const asyncHandler = require('express-async-handler');
 
-const { Plant } = require('../../db/models');
+const { Note } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 
 
-// const validatePlant = [
+// const validateNote = [
 //WORK IN PROGRESS!!!!!!!!!!!
 //   check('email')
 //     .exists({ checkFalsy: true })
@@ -35,28 +35,26 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 
 
-// Get plants
+// Get notes
 router.get('/', asyncHandler(async (req, res) => {
-  const plants = await Plant.findAll({});
-// console.log(plants);
-  return res.json(plants);
+  const notes = await Note.findAll({});
+// console.log(notes);
+  return res.json(notes);
 }));
 
 
 
 
-// Create plant
+// Create Note
 router.post(
   '/',
-  // validatePlant,
+  // validateNote,
   asyncHandler(async (req, res) => {
-    const {name, binomialName, imgUrl, description, sunRequirements, userId} = req.body;
-    const plant = await Plant.create({name, binomialName, imgUrl, description, sunRequirements, userId});
+    const {userId, plantId, body, waterFreq} = req.body;
+    const note = await Note.create({userId, plantId, body, waterFreq});
 
-    // const json =  await plant.json();
 
-console.log(plant.dataValues.id);
-    return res.json(plant);
+    return res.json(note);
   }),
 );
 
@@ -66,11 +64,11 @@ router.put(
   '/:id',
   // validatePlant,
   asyncHandler(async (req, res) => {
-    const {id, name, binomialName, imgUrl, description, sunRequirements, userId} = req.body;
-    const update = await Plant.findByPk(id);
-    const plant = await update.update({id, name, binomialName, imgUrl, description, sunRequirements, userId});
+    const {id, userId, plantId, body, waterFreq} = req.body;
+    const update = await Note.findByPk(id);
+    const note = await update.update({id, userId, plantId, body, waterFreq});
 
-    return res.json(plant);
+    return res.json(note);
   })
 );
 
@@ -80,10 +78,10 @@ router.delete(
   '/:id',
   asyncHandler(async (req, res) => {
     const id = req.params.id;
-    const plant = await Plant.findByPk(id);
-    await plant.destroy();
+    const note = await Note.findByPk(id);
+    await note.destroy();
 
-    return res.json({ message: 'Plant deleted' });
+    return res.json({ message: 'Note deleted' });
   })
 );
 

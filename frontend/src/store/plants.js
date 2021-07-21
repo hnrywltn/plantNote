@@ -24,6 +24,7 @@ export const getPlants = () => async (dispatch) => {
 }
 
 
+
 export const addPlant = payload => async dispatch => {
   const res = await csrfFetch(`/api/plants`, {
     method: 'POST',

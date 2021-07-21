@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import HomePageCSS from './HomePage.module.css';
@@ -9,12 +9,12 @@ import {getPlants} from '../../store/plants.js';
 const HomePage = () => {
   // const [plants, setPlants] = useState([]);
   const dispatch = useDispatch();
-  const {params} = useParams();
+  // const {params} = useParams();
   const plants = useSelector(state => {
     return Object.values(state.plant);
   });
 
-  // console.log(plants)
+  console.log(plants)
 
   useEffect(() => {
     dispatch(getPlants());

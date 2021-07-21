@@ -26,7 +26,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
         <div><ProfileButton user={sessionUser} /></div>
     );
-  if(location.pathname === '/plants' || location.pathname === '/todos' || location.pathname === '/plants/add'){
+  if(location.pathname === '/plants' || location.pathname === '/todos' || location.pathname === '/plants/add' || /[0-9]+/.test(location.pathname)){
     sessionLinks = (
       <>
         <ProfileButton user={sessionUser} />

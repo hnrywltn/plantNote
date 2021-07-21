@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER
   }, {});
   Plant.associate = function(models) {
-    // associations can be defined here
+    Plant.belongsTo(models.User, {foreignKey: 'userId'});
+    Plant.hasMany(models.Todo, {foreignKey: 'plantId'});
+    Plant.hasMany(models.Note, {foreignKey: 'plantId'});
   };
   return Plant;
 };

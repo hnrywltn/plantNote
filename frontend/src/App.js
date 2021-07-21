@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import AddPlant from "./components/AddPlant";
+import Plant from "./components/Plant";
 
 
 
@@ -38,6 +39,10 @@ function App() {
 
           <Route path="/plants/add">
             <AddPlant />
+          </Route>
+
+          <Route path="/plants/:id">
+            <Plant />
           </Route>
 
           <Route path="/login">

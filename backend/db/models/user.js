@@ -99,7 +99,9 @@ User.signup = async function ({ username, email, password }) {
 };
 
 User.associate = function(models) {
-  // associations can be defined here
+  User.hasMany(models.ToDo, {foreignKey: 'userId'});
+  User.hasMany(models.Plant, {foreignKey: 'userId'});
+  User.hasMany(models.Note, {foreignKey: 'userId'});
 };
 return User;
 };

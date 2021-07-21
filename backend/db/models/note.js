@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     waterFreq: DataTypes.INTEGER
   }, {});
   Note.associate = function(models) {
-    // associations can be defined here
+    Note.belongsTo(models.User, {foreignKey: 'userId'});
+    Note.belongsTo(models.Plant, {foreignKey: 'plantId'});
   };
   return Note;
 };

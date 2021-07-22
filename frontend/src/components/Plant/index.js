@@ -5,19 +5,45 @@ import { useParams, useHistory } from 'react-router-dom';
 
 // import {editPlant} from '../../store/plants.js';
 import {getPlants, editPlant, removePlant} from '../../store/plants.js';
+import {getNotes} from '../../store/notes.js';
+
+
+
+
+import Notes from './../Notes';
 
 
 const Plant = () => {
   const dispatch = useDispatch();
   const {id} = useParams();
+  const history = useHistory();
+
+
+
+
+  const sessionUser = useSelector(state => {
+    return state.session.user
+  });
+
   const plants = useSelector(state => {
     return state.plant;
   });
 
+  const notes = useSelector(state => {
+    return Object.values(state.note);
+  });
 
-  const history = useHistory();
-  const sessionUser = useSelector(state => state.session.user);
+
+
+// console.log(notes);
+
+
   const plant = plants[id];
+
+
+
+
+
 
 // console.log(plant);
 
@@ -36,6 +62,7 @@ const Plant = () => {
 
 
   useEffect(() => {
+    dispatch(getNotes());
     dispatch(getPlants());
     if(plant){
       setName(plant.name);
@@ -45,7 +72,7 @@ const Plant = () => {
       setSunRequirements(plant.sunRequirements);
       setUserId(plant.userId);
     }
-  }, [plant]);
+  }, []);
 
 
 
@@ -103,7 +130,7 @@ const Plant = () => {
       </div>
       <div className='plantDescription'>
         {/* shorten descrip CHANGE BACK */}
-        <p>{plant.description.slice(0, 40)}</p>
+        <p>{plant.description.slice(0, 200)}</p>
       </div>
       {sessionUser.id === plant.userId &&<div className='plantShowFormBttn'>
         <button onClick={() => setShowForm(true)}>Edit / Delete</button>
@@ -197,6 +224,7 @@ const Plant = () => {
 
   return (
     <div className='plantContainer'>
+      <Notes notes={notes}/>
       {plantDom}
     </div>
   );

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const asyncHandler = require('express-async-handler');
 
-const { Note } = require('../../db/models');
+const { ToDo } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -35,53 +35,53 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 
 
-// Get notes
+// Get todos
 router.get('/', asyncHandler(async (req, res) => {
-  const notes = await Note.findAll({});
-// console.log(notes);
-  return res.json(notes);
+  const todos = await ToDo.findAll({});
+// console.log(todos);
+  return res.json(todos);
 }));
 
 
 
 
-// Create Note
+// Create todo
 router.post(
   '/',
-  // validateNote,
+  // validatetodo,
   asyncHandler(async (req, res) => {
-    const {userId, plantId, body, waterFreq} = req.body;
-    const note = await Note.create({userId, plantId, body, waterFreq});
+    const {userId, plantId, title, description, complete, dueDate} = req.body;
+    const todo = await ToDo.create({userId, plantId, title, description, complete, dueDate});
 
 
-    return res.json(note);
+    return res.json(todo);
   }),
 );
 
 
-// Edit note
+// Edit todo
 router.put(
   '/:id',
   // validatePlant,
   asyncHandler(async (req, res) => {
-    const {id, userId, plantId, body, waterFreq} = req.body;
-    const update = await Note.findByPk(id);
-    const note = await update.update({id, userId, plantId, body, waterFreq});
+    const {id, userId, plantId, title, description, complete, dueDate} = req.body;
+    const update = await ToDo.findByPk(id);
+    const todo = await update.update({id, userId, plantId, title, description, complete, dueDate});
 
-    return res.json(note);
+    return res.json(todo);
   })
 );
 
 
-// Delete note
+// Delete todo
 router.delete(
   '/:id',
   asyncHandler(async (req, res) => {
     const id = req.params.id;
-    const note = await Note.findByPk(id);
-    await note.destroy();
+    const todo = await ToDo.findByPk(id);
+    await todo.destroy();
 
-    return res.json({ message: 'Note deleted' });
+    return res.json({ message: 'ToDo deleted' });
   })
 );
 

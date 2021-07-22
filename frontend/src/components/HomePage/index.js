@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import HomePageCSS from './HomePage.module.css';
 
 import {getPlants} from '../../store/plants.js';
+import {getNotes} from '../../store/notes.js';
+// import {getTodos} from '../../store/todos.js';
 
 
 const HomePage = () => {
@@ -11,13 +13,26 @@ const HomePage = () => {
   const dispatch = useDispatch();
   // const {params} = useParams();
   const plants = useSelector(state => {
-    return Object.values(state.plant);
+    return Object.values(state.plant).reverse();
   });
 
-  console.log(plants)
+
+  // const sessionUser = useSelector(state => {
+  //   return state.session.user
+  // });
+
+
+  // const todos = useSelector(state => {
+  //   return Object.values(state.todo).filter(td => td.userId === sessionUser.id)
+  //   .reverse();
+  // });
+
+  // console.log(todos)
 
   useEffect(() => {
     dispatch(getPlants());
+    dispatch(getNotes());
+    // dispatch(getTodos());
   }, []);
 
   if(!plants){
@@ -25,13 +40,16 @@ const HomePage = () => {
   }
 
   return (
-    <div className={HomePageCSS.border}>
-      <h1>HomePage</h1>
-      <ul>
+    <div className='homePlantCardContainer'>
+      {/* <h1>HomePage</h1> */}
         {plants.map((plant, i) => {
-          return <li key={i}>{plant.name}</li>;
+          return (
+            <Link key={i} to={`/plants/${plant.id}`}        className='plantCard' style={ { backgroundImage: `url(${plant.imgUrl})`} }>
+              <div className='plantCardName'>{plant.name}</div>
+              <div className='plantCardBName'>{plant.binomialName}</div>
+            </Link>
+          );
         })}
-      </ul>
 
     </div>
   );

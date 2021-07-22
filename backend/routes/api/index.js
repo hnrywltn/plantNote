@@ -7,12 +7,18 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const plantsRouter = require('./plants.js');
+const notesRouter = require('./notes.js');
+const todosRouter = require('./todos.js');
 
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
 router.use('/plants', plantsRouter);
+
+router.use('/notes', notesRouter);
+
+router.use('/todos', todosRouter);
 
 
 

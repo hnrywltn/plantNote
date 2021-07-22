@@ -1,32 +1,44 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import { useSelector, useDispatch } from 'react-redux';
 // import NavigationCSS from './Navigation.module.css';
 import { useState, useEffect } from 'react';
 
 
+import {getTodos} from '../../store/todos.js';
+
 
 
 function Navigation({ isLoaded }){
+  const dispatch = useDispatch();
   const location = useLocation();
   const [hideNav, setHideNav] = useState('hideNavbar');
   // console.log(location);
 
   const isHidden = location.pathname === '/SplashPage' ? 'hideNavbar' : 'navbar';
 
+  const sessionUser = useSelector(state => state.session.user);
+
+
+  const todos = useSelector(state => {
+    return Object.values(state.todo).filter(td => td.userId === sessionUser.id)
+    .reverse();
+  });
+
+
   useEffect(() => {
+    dispatch(getTodos());
     setHideNav(isHidden);
   }, [isHidden]);
 
-  const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
         <div><ProfileButton user={sessionUser} /></div>
     );
-  if(location.pathname === '/plants' || location.pathname === '/todos' || location.pathname === '/plants/add' || /[0-9]+/.test(location.pathname)){
+  if(location.pathname === '/plants' || location.pathname === '/todos' || location.pathname === '/plants/add' || /[0-9]+/.test(location.pathname) || location.pathname === '/todos'){
     sessionLinks = (
       <>
         <ProfileButton user={sessionUser} />

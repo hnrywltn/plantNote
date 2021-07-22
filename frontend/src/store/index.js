@@ -6,11 +6,15 @@ import thunk from "redux-thunk";
 //import as object because its an export default
 import  sessionReducer  from './session';
 import plantReducer from './plants';
+import noteReducer from './notes';
+import todoReducer from './todos';
 
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   plant: plantReducer,
+  note: noteReducer,
+  todo: todoReducer
 });
 
 let enhancer;

@@ -57,7 +57,7 @@ export const addPlant = payload => async dispatch => {
 
 
 export const editPlant = payload => async dispatch => {
-  console.log('PAYLOAD!!!!', payload);
+  // console.log('PAYLOAD!!!!', payload);
   const res = await csrfFetch(`/api/plants/${payload.id}`, {
     method: 'PUT',
     headers: {

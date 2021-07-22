@@ -7,6 +7,7 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [
       {
         email: 'demo@user.io',
+        username: 'demo-lition',
         name: 'Demo User',
         bio: faker.lorem.sentence(),
         profileImg: 'https://assets.vogue.com/photos/5c8ff6c0ac563c2de0043d1d/3:4/w_1950,h_2600,c_limit/00-promo-image-boys-with-plants-book.jpg',

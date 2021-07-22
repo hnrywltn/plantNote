@@ -21,100 +21,99 @@
 
 
 
-
 /* NAVBAR STARRRRRRTTTTTTT */
 
 .hideNavbar {
-    display: none;
-  }
+  display: none;
+}
 
-  .navbar {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(12, 1fr);
-    /* justify-content: space-around; */
-    /* flex-direction: column; */
-    background-color: rgba(112, 128, 144, 0.688) solid .5px;;
-    grid-row: 1 /end;
-    grid-column: 1 / 5;
-    /* align-items: center; */
-    box-shadow: inset 0 0 20px 0 rgba(0, 93, 68, 0.475);
-    box-sizing: border-box;
-    font-family: monospace;
-    font-size: 45px;
-    border: rgba(112, 128, 144, 0.688) solid .5px;
-  }
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(12, 1fr);
+  /* justify-content: space-around; */
+  /* flex-direction: column; */
+  background-color: rgba(112, 128, 144, 0.688) solid .5px;;
+  grid-row: 1 /end;
+  grid-column: 1 / 5;
+  /* align-items: center; */
+  box-shadow: inset 0 0 20px 0 rgba(0, 93, 68, 0.475);
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 45px;
+  border: rgba(112, 128, 144, 0.688) solid .5px;
+}
 
-  .noDec{
-    color: rgba(112, 128, 144, 0.692);
-    text-decoration: none;
-  }
+.noDec{
+  color: rgba(112, 128, 144, 0.692);
+  text-decoration: none;
+}
 
-  /* .noDec:hover{
-    color: snow;
-  } */
+/* .noDec:hover{
+  color: snow;
+} */
 
-  .home {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    grid-row: 6 / 8;
-    padding: 10px;
-  }
-
-
-  .login {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    grid-row: 11 / 12;
-    padding-bottom: 25px;
-  }
-
-  .signup {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    grid-row: 12 / 13;
-    padding-bottom: 25px;
-  }
-
-  .addPlant {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    grid-row: 1 / 4;
-    font-size: 150px;
-    text-decoration: none;
-    color: rgba(112, 128, 144, 0.692);
-  }
-
-  .toDoList {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    grid-row: 4 / 6;
-  }
+.home {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-row: 6 / 8;
+  padding: 10px;
+}
 
 
+.login {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-row: 11 / 12;
+  padding-bottom: 25px;
+}
 
-  .addPlant:hover {
-    color: snow;
-    background-color: rgba(0, 93, 68, 0.774);
-    padding: 0px;
-    text-shadow: rgb(0, 0, 0) 1px 0 10px;
-    box-shadow: inset 0 0 10px #0000008e;
-  }
+.signup {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-row: 12 / 13;
+  padding-bottom: 25px;
+}
+
+.addPlant {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-row: 1 / 4;
+  font-size: 150px;
+  text-decoration: none;
+  color: rgba(112, 128, 144, 0.692);
+}
+
+.toDoList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-row: 4 / 6;
+}
 
 
-  .sideBar:hover {
-    background-color: rgba(0, 93, 68, 0.774);
-    padding: 0px;
-    color: snow;
-    font-weight: bolder;
-    text-shadow: rgb(0, 0, 0) 1px 0 10px;
-    box-shadow: inset 0 0 10px #0000008e;
-  }
+
+.addPlant:hover {
+  color: snow;
+  background-color: rgba(0, 93, 68, 0.774);
+  padding: 0px;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+  box-shadow: inset 0 0 10px #0000008e;
+}
+
+
+.sideBar:hover {
+  background-color: rgba(0, 93, 68, 0.774);
+  padding: 0px;
+  color: snow;
+  font-weight: bolder;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+  box-shadow: inset 0 0 10px #0000008e;
+}
 
 
 /* NAVBAR END !!!!!!!!!!!!!!!!!!! */
@@ -163,7 +162,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-list-style-type: none;
+  list-style-type: none;
 }
 
 .logOut {
@@ -239,3 +238,18 @@ list-style-type: none;
   height: 103%;
   box-shadow:  0 0 15px rgba(0, 0, 0, 0.842);
 }
+
+
+
+
+
+
+
+/* START TODO -------------------------------------------- */
+
+.todo {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+
+/* END TODO -------------------------------------------- */

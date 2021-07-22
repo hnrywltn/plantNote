@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import AddPlant from "./components/AddPlant";
 import Plant from "./components/Plant";
+import Todo from "./components/ToDo";
 
 
 
@@ -29,12 +30,20 @@ function App() {
       {isLoaded && (
         <Switch>
 
+          <Route exact path="/">
+            <SplashPage />
+          </Route>
+
           <Route path='/SplashPage'>
             <SplashPage />
           </Route>
 
           <Route exact path="/plants">
             <HomePage />
+          </Route>
+
+          <Route path='/todos'>
+            <Todo />
           </Route>
 
           <Route path="/plants/add">

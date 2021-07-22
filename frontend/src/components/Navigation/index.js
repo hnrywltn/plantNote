@@ -16,15 +16,15 @@ function Navigation({ isLoaded }){
   const [hideNav, setHideNav] = useState('hideNavbar');
   // console.log(location);
 
-  const isHidden = location.pathname === '/SplashPage' ? 'hideNavbar' : 'navbar';
+  const isHidden = (location.pathname === '/SplashPage' || location.pathname === '/') ? 'hideNavbar' : 'navbar';
 
   const sessionUser = useSelector(state => state.session.user);
 
 
-  const todos = useSelector(state => {
-    return Object.values(state.todo).filter(td => td.userId === sessionUser.id)
-    .reverse();
-  });
+  // const todos = useSelector(state => {
+  //   return Object.values(state.todo).filter(td => td.userId === sessionUser?.id)
+  //   .reverse();
+  // });
 
 
   useEffect(() => {

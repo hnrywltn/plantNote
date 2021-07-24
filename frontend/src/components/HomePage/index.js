@@ -40,7 +40,12 @@ const HomePage = () => {
   }
 
   return (
+    <>
     <div className='homePlantCardContainer'>
+    <div className='PLANTNOTE'>
+      <h2 className='titleCard'>Plant</h2>
+      <h2 className='titleCard'>Note</h2>
+      </div>
       {/* <h1>HomePage</h1> */}
         {plants.map((plant, i) => {
           return (
@@ -52,6 +57,7 @@ const HomePage = () => {
         })}
 
     </div>
+    </>
   );
 }
 

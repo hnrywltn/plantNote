@@ -1,6 +1,6 @@
 import React from 'react';
 // import { useLocation} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import NavigationCSS from './Navigation.module.css';
 import { useState } from 'react';
 import { addPlant } from '../../store/plants.js';
@@ -13,21 +13,29 @@ function AddPlant({ isLoaded }){
   const dispatch = useDispatch();
   const history = useHistory();
 
-
+  const sessionUser = useSelector(state => {
+    return state.session.user
+  });
 
   const [name, setName] = useState('');
   const [binomialName, setBinomialName] = useState('');
   const [imgUrl, setImgUrl] = useState('');
   const [description, setDescription] = useState('');
   const [sunRequirements, setSunRequirements] = useState('');
-  const [userId, setUserId] = useState('');
+  const [userId, setUserId] = useState(sessionUser.id);
   const [errors, setErrors] = useState([]);
 
 
   const handleSubmit = async(e) => {
     e.preventDefault();
 
-     const plant = await dispatch(addPlant({name, binomialName, imgUrl, description, sunRequirements, userId}))
+     const plant = await dispatch(addPlant({
+       name,
+       binomialName,
+       imgUrl,
+       description,
+       sunRequirements,
+       userId}))
       // .catch(async (res) => {
       //   const data = await res.json();
       //   if (data && data.errors) setErrors(data.errors);
@@ -36,7 +44,7 @@ function AddPlant({ isLoaded }){
       history.push(`/plants/${plant.id}`);
   }
 
-
+console.log(sessionUser)
 
   return (
     <div className="addPlantForm form">
@@ -89,14 +97,7 @@ function AddPlant({ isLoaded }){
                  required
           />
         </label>
-        <label>
-          UserId:
-          <input type="number"
-                 value={userId}
-                 onChange={(e) => setUserId(e.target.value)}
-                 required
-          />
-        </label>
+
 
 
       </form>

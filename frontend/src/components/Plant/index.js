@@ -56,7 +56,7 @@ const Plant = () => {
   const [description, setDescription] = useState('');
   const [sunRequirements, setSunRequirements] = useState('');
   const [userId, setUserId] = useState(0);
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
 
 
 
@@ -115,33 +115,35 @@ const Plant = () => {
   if(plant && !showForm ) {
     plantDom = (
     <>
-      <div className='plantName'>
-        <h2>{plant.name}</h2>
-      </div>
-      <div className='plantBinomialName'>
-        <p>{plant.binomialName}</p>
-        {/* <p>{plant?.binomialName}</p>  <-- optionalchaining */}
-      </div>
-      <div className='plantImg'>
+    {/* <div className='singlePlant'> */}
+      <div className='plantImg' >
         <img src={plant.imgUrl} alt={plant.binomialName} />
       </div>
       <div className='plantSunReq'>
         <p>{plant.sunRequirements}</p>
       </div>
+      <div className='plantBinomialName'>
+        <p>{plant.binomialName}</p>
+        {/* <p>{plant?.binomialName}</p>  <-- optionalchaining */}
+      </div>
       <div className='plantDescription'>
         {/* shorten descrip CHANGE BACK */}
-        <p>{plant.description.slice(0, 200)}</p>
+        <p>{plant.description}</p>
       </div>
-      {sessionUser.id === plant.userId &&<div className='plantShowFormBttn'>
-        <button onClick={() => setShowForm(true)}>Edit / Delete</button>
+      <div className='plantName'>
+        <h2>{plant.name}</h2>
+      </div>
+      {sessionUser.id === plant.userId &&<div className='plantShowFormBttn '>
+        <button  onClick={() => setShowForm(true)}></button>
       </div>}
 
-      <div className='plantUser'>
+      {/* <div className='plantUser'>
         <p>{plant.userId}</p>
-      </div>
+      </div> */}
       <div className='plantCreatedAt'>
-        <p>{plant.createdAt}</p>
+        <p>{`added on: ${plant.createdAt}`}</p>
       </div>
+    {/* </div > */}
     </>
     )
 } else if(plant && showForm ) {
@@ -201,14 +203,15 @@ const Plant = () => {
                  required
           />
         </label>
-        <label>
+        {/* <label >
           UserId:
           <input type="number"
                  value={userId}
                  onChange={(e) => setUserId(e.target.value)}
                  required
+                //  className="hideUserId"
           />
-        </label>
+        </label> */}
 
 
       </form>
@@ -224,8 +227,8 @@ const Plant = () => {
 
   return (
     <div className='plantContainer'>
-      <Notes notes={notes}/>
       {plantDom}
+      {/* <Notes notes={notes}/> */}
     </div>
   );
 }

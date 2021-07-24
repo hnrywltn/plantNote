@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import './LoginForm.css';
 
 function LoginFormPage() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
@@ -25,13 +26,23 @@ function LoginFormPage() {
       });
   }
 
+  const demo = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.login({
+       credential: 'Demo-lition',
+       password:'password'
+      }));
+    history.push('/plants');
+  }
+
   return (
+    <div className='loginForm form'>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
-        Username or Email
+        Email
         <input
           type="text"
           value={credential}
@@ -49,7 +60,9 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
+      <button type='button' onClick={demo}>DEMO</button>
     </form>
+      </div>
   );
 }
 

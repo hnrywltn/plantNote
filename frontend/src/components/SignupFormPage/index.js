@@ -40,12 +40,13 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className='signupForm form'>
+    <form  onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
-        Email
+        Email:
         <input
           type="text"
           value={email}
@@ -54,7 +55,7 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Username
+        Username:
         <input
           type="text"
           value={username}
@@ -63,7 +64,7 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Name
+        Name:
         <input
           type="text"
           value={name}
@@ -72,7 +73,7 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Bio
+        Bio:
         <input
           type="text"
           value={bio}
@@ -81,7 +82,7 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Profile Image Url
+        Profile Image Url:
         <input
           type="text"
           value={profileImg}
@@ -90,7 +91,7 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Password
+        Password:
         <input
           type="password"
           value={password}
@@ -99,7 +100,7 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Confirm Password
+        Confirm Password:
         <input
           type="password"
           value={confirmPassword}
@@ -109,6 +110,7 @@ function SignupFormPage() {
       </label>
       <button type="submit">Sign Up</button>
     </form>
+    </div>
   );
 }
 

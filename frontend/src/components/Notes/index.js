@@ -28,7 +28,7 @@ const Notes = ({notes}) => {
 // notes = Object.values(notes);
 
 
-console.log('NOTES FROM NOTESCOMP', notes)
+// console.log('NOTES FROM NOTESCOMP', notes)
 
 
 

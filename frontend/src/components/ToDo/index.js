@@ -58,7 +58,7 @@ const Todo = () => {
 
   const handleEdit = async(e) => {
     e.preventDefault();
-console.log(e.target);
+// console.log(e.target);
     // await dispatch(editPlant({}))
       setShowForm(false);
       return;

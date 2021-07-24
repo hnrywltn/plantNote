@@ -44,7 +44,7 @@ function AddPlant({ isLoaded }){
       history.push(`/plants/${plant.id}`);
   }
 
-console.log(sessionUser)
+// console.log(sessionUser)
 
   return (
     <div className="addPlantForm form">

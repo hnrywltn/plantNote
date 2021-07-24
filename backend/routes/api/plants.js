@@ -55,7 +55,7 @@ router.post(
 
     // const json =  await plant.json();
 
-console.log(plant.dataValues.id);
+// console.log(plant.dataValues.id);
     return res.json(plant);
   }),
 );

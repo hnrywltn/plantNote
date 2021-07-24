@@ -76,7 +76,7 @@ export const removePlant = (id) => async dispatch => {
   const res = await csrfFetch(`/api/plants/${ id }`, {
       method: 'DELETE',
   })
-console.log('YAAAAAYYYYY thunks');
+
   if(res.ok) {
       await res.json();
       dispatch(remove(id));
@@ -122,7 +122,7 @@ const plantReducer = (state = [], action) => {
     }
     case REMOVE_PLANT: {
       const newState = {...state};
-      console.log('REDUCER ACTION: ', action)
+      // console.log('REDUCER ACTION: ', action)
       delete newState[action.id];
       return newState;
   }

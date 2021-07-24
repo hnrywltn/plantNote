@@ -99,12 +99,15 @@ User.login = async function ({ credential, password }) {
 
 
 // Create a User with the username, email, and hashedPassword
-User.signup = async function ({ username, email, password }) {
+User.signup = async function ({ username, email, password, name, bio, profileImg }) {
   const hashedPassword = bcrypt.hashSync(password);
   const user = await User.create({
     username,
     email,
     hashedPassword,
+    name,
+    bio,
+    profileImg,
   });
   return await User.scope('currentUser').findByPk(user.id);
 };

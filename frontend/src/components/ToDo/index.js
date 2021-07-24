@@ -14,14 +14,25 @@ const Todo = () => {
   // const {id} = useParams();
 
   const [showForm, setShowForm] = useState(false);
-  const [errors, setErrors] = useState([]);
+
+
+  const [id, setId] = useState(0);
+  // const [plantId, setPlantId] = useState(0);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [complete, setComplete] = useState(false);
+  // const [dueDate, setDueDate] = useState('');
+
+
+
+  // const [errors, setErrors] = useState([]);
 
 
 
   useEffect(() => {
     dispatch(getPlants());
     dispatch(getTodos());
-  }, []);
+  }, [dispatch]);
 
 
 
@@ -36,7 +47,7 @@ const Todo = () => {
     return Object.values(state.plant).filter(plant => plant.userId === sessionUser?.id)
   });
 
-
+// console.log(id)
 
 // console.log(plant);
 // console.log(todos);
@@ -45,13 +56,13 @@ const Todo = () => {
 
   // console.log(sessionUser, 'sessionUser');
 
-  // const handleSubmit = async(e) => {
-  //   e.preventDefault();
-
-  //   await dispatch(editPlant({}))
-  //     setShowForm(false);
-  //     return;
-  // }
+  const handleEdit = async(e) => {
+    e.preventDefault();
+console.log(e.target);
+    // await dispatch(editPlant({}))
+      setShowForm(false);
+      return;
+  }
 
 
   // const handleDelete = async(e) => {
@@ -61,7 +72,51 @@ const Todo = () => {
   // }
 
 
+  let todoDom = null;
 
+  if (showForm) {
+    todoDom = (
+      todos.map(td => (
+        <form onSubmit={handleEdit} key={td.id} className={td.id}>
+          <button type="submit">Save</button>
+          <label >
+            Title
+            <input
+              type="text"
+              placeholder={td.title}
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+            />
+          </label>
+
+          <label>
+            Description
+            <input type="text" placeholder={td.description} />
+          </label>
+
+          <label>
+            Complete
+            <input
+              type="checkbox"
+              checked={complete}
+              onChange={e => setComplete(e.target.checked)}
+            />
+          </label>
+        </form>
+      ))
+    )
+  } else {
+    todoDom = (
+      todos.map(td => (
+        <div key={td.id} className='todo'>
+          <div className='todoTitle todoText'>{td.title}</div>
+          <div className='todoDescription todoText'>{td.description}</div>
+          <div className='todoComplete todoText'>{`Completed: ${td.complete}`}</div>
+          <button className='todoSettings' onClick={() => setShowForm(true)}></button>
+        </div>
+      ))
+    )
+  }
 
 
 
@@ -88,13 +143,13 @@ const Todo = () => {
         </div>
 
         <div className='profilePlants'>
-        {plants.map((plant, i) => {
-          return (
-            <Link key={i} to={`/plants/${plant.id}`}        className='profilePlant' style={ { backgroundImage: `url(${plant.imgUrl})`} }>
-              {plant.name}
-            </Link>
-          );
-        })}
+          {plants.map((plant, i) => {
+            return (
+              <Link key={i} to={`/plants/${plant.id}`}        className='profilePlant' style={ { backgroundImage: `url(${plant.imgUrl})`} }>
+                {plant.name}
+              </Link>
+            );
+          })}
         </div>
 
 
@@ -107,18 +162,7 @@ const Todo = () => {
         {/* </div> */}
 
         <div className='todoScroll'>
-          {todos.map(td => (
-            <div key={td.id} className='todo'>
-              <div className='todoTitle todoText'>{td.title}</div>
-              <div className='todoDescription todoText'>{td.description}</div>
-              <div className='todoComplete todoText'>{`Completed: ${td.complete}`}</div>
-
-
-
-
-              <button className='todoSettings' onClick={() => setShowForm(true)}></button>
-            </div>
-          ))}
+          {todoDom}
 
         </div>
 

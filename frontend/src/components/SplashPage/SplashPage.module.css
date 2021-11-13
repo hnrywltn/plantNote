@@ -20,12 +20,21 @@ body {
   grid-template-rows: repeat(3, 33.33%);
 }
 
+.titleContainer {
+  background-color: rgba(255, 250, 250, 0.432);
+  grid-row: 1 / 3;
+  grid-column: 3 / 4;
+}
 
 .title {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
   padding-right: 95px;
   padding-bottom: 100px;
   font-family: monospace;
-  font-size: 75px;
+  font-size: 100px;
   letter-spacing: 10px;
   font-weight: bolder;
   background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
@@ -36,65 +45,46 @@ body {
 
 .splashAbout p {
   font-family: monospace;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bolder;
   padding-right: 20px;
   padding-bottom: 25px;
-  color: rgb(77, 88, 99);
+  color: rgb(40, 45, 51);
 }
 
 .splashAbout {
+  background-color: rgba(255, 250, 250, 0.432);
   grid-row: 1 / 3;
-  grid-column: 3 / 4;
-  /* height: 100%; */
+  grid-column: 1 / 3;
+  padding: 50px;
   display: flex;
-  /* padding: 80px; */
-
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* text-align: justify; */
 }
 
-.splashPoweredBy {
-  /* background-color: rgba(0, 0, 128, 0.448); */
-  /* padding: 80px; */
+.demo {
   grid-row: 3 / 4;
   grid-column: 1 / 2;
-  /* height: 100%; */
-  display: flex;
-  padding: 15px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: start;
-  box-shadow: inset 0px 0px 20px rgba(12, 59, 2, 0.479);
-  border-radius: 10px;
-  font-family: monospace;
-  font-size: 20px;
+
 }
 
-
-
-.splashHome {
+.demo button {
+  background-color: rgba(255, 250, 250, 0.432);
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0px 0px 20px rgba(12, 59, 2, 0.479);
+  border-radius: 10px;
   font-family: monospace;
   font-size: 45px;
   font-weight: bolder;
   color: rgba(112, 128, 144, 0.578);
-  /* padding: 80px; */
-
-  /* background-color: rgba(0, 128, 94, 0.448); */
-  display: flex;
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  /* height: 100%; */
-  text-decoration: none;
-  align-items: center;
-  justify-content: center;
-  transition: box-shadow .3s ease;
-  background-color: rgba(255, 0, 0, 0);
+  cursor: pointer;
 }
-
 
 
 .splashSignUp {
@@ -102,49 +92,40 @@ body {
   font-size: 45px;
   font-weight: bolder;
   color: rgba(112, 128, 144, 0.378);
-
+  background-color: rgba(255, 250, 250, 0.432);
   padding: 80px;
-  /* background-color: rgba(60, 128, 0, 0.448); */
   display: flex;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
   grid-column: 2 / 3;
-  /* height: 100%; */
   text-decoration: none;
   align-items: center;
   justify-content: center;
   transition: box-shadow .3s ease;
-  background-color: rgba(255, 0, 0, 0);
 }
 
 .splashLogin {
+  background-color: rgba(255, 250, 250, 0.432);
   font-family: monospace;
   font-size: 45px;
   font-weight: bolder;
   color: rgba(112, 128, 144, 0.578);
-
-
-  /* background-color: rgba(128, 0, 0, 0.448); */
   display: flex;
   grid-row: 3 / 4;
   grid-column: 3 / 4;
-  /* height: 100%; */
   text-decoration: none;
   align-items: center;
   justify-content: center;
-
-
   transition: box-shadow .5s ease;
-  background-color: rgba(255, 0, 0, 0);
 }
 
 
-.splashHome:hover {
+/* .splashHome:hover {
   background-color: rgba(0, 128, 94, 0.085);
   border: rgba(112, 128, 144, 0.688) solid .5px;
   border-radius: 10px;
   box-shadow: inset 0 0 40px 0 rgba(0, 93, 68, 0.475);
   color: slategray;
-}
+} */
 
 .splashSignUp:hover {
   background-color: rgba(0, 128, 94, 0.085);
@@ -161,10 +142,3 @@ body {
   box-shadow: inset 0 0 40px 0 rgba(0, 93, 68, 0.475);
   color: slategray;
 }
-
-
-
-
-/* link {
-  border: 1px solid red;
-} */

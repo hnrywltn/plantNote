@@ -21,10 +21,7 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
 
-  // const todos = useSelector(state => {
-  //   return Object.values(state.todo).filter(td => td.userId === sessionUser?.id)
-  //   .reverse();
-  // });
+
 
 
   useEffect(() => {
@@ -73,15 +70,30 @@ function Navigation({ isLoaded }){
     );
   }
 
+    let homeBttn = null;
 
-
-  return (
-    <div className={hideNav}>
+  if (sessionUser) {
+    homeBttn = (
       <Link to="/plants" className='home noDec sideBar'>
         <div>
           Home
         </div>
       </Link>
+    ) } else {
+    homeBttn = (
+      <Link to="/login" className='home noDec sideBar'>
+        <div>
+          Home
+        </div>
+      </Link>
+      )
+    }
+
+
+
+  return (
+    <div className={hideNav}>
+      {homeBttn}
 
 
       {isLoaded && sessionLinks}

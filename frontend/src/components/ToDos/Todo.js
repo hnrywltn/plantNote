@@ -12,7 +12,7 @@ const Todo = ({todo, UIandMethods}) => {
 
   const [showForm, setShowForm] = useState(UIandMethods.showForm);
 
-console.log(UIandMethods, 'SINGLE TODO FROM NEW COMP')
+
   const [title, setTitle] = useState(todo.title);
   const [description, setDescription] = useState(todo.description);
   const [complete, setComplete] = useState(todo.complete);

@@ -53,21 +53,7 @@ function Navigation({ isLoaded }){
     );
   }
   } else {
-    sessionLinks = (
-      <>
-        <Link to="/login" className='login noDec sideBar'>
-          <div>
-            Login
-          </div>
-        </Link>
-        <Link to="/signup" className='signup noDec sideBar'>
-          <div>
-            Sign Up
-          </div>
-        </Link>
-
-      </>
-    );
+    sessionLinks = null
   }
 
     let homeBttn = null;
@@ -81,9 +67,9 @@ function Navigation({ isLoaded }){
       </Link>
     ) } else {
     homeBttn = (
-      <Link to="/login" className='home noDec sideBar'>
+      <Link to="/" className='home noDec sideBar'>
         <div>
-          Home
+          BACK
         </div>
       </Link>
       )

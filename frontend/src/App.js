@@ -9,7 +9,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import AddPlant from "./components/AddPlant";
 import Plant from "./components/Plant";
-import Todo from "./components/ToDo";
+import Todos from "./components/ToDos";
 
 
 
@@ -43,7 +43,7 @@ function App() {
           </Route>
 
           <Route path='/todos'>
-            <Todo />
+            <Todos />
           </Route>
 
           <Route path="/plants/add">
